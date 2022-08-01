@@ -4,13 +4,34 @@ import SingleColor from './SingleColor';
 import Values from 'values.js';
 
 function App() {
-  function handleChange() {}
+  const [color, setColor] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [list, setList] = useState([]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      let colors = new Values(color).all(10);
+
+      console.log(colors);
+    } catch (error) {
+      setIsError(true);
+      console.log(error, 'unable');
+    }
+  }
   return (
     <>
       <section className="container">
         <h3>color generator</h3>
-        <form>
-          <input type="text" placeholder="#f15025" className="null" value="" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="#f15025"
+            className={`${isError ? 'error' : null}`}
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+          />
           <button type="submit" className="btn">
             submit
           </button>
