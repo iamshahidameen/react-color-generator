@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import rgbToHex from './utils';
 
-const SingleColor = ({ rgb, weight, index }) => {
+const SingleColor = ({ rgb, weight, index, hexColor }) => {
+  //  by joining array into string for rgb color
   const bgColor = rgb.join(',');
 
-  {
-    /* RGB to Hex Color conversion through StackOverflow function method  */
-  }
-
-  const hex = rgbToHex(...rgb);
+  // RGB to Hex Color conversion through StackOverflow function method
+  // const hex = rgbToHex(...rgb);
   return (
     <>
       <article
@@ -21,7 +19,7 @@ const SingleColor = ({ rgb, weight, index }) => {
       >
         <p className="percent-value">{weight}%</p>
 
-        <p className="color-value">{hex}</p>
+        <p className="color-value">{hexColor}</p>
       </article>
     </>
   );
