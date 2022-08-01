@@ -12,9 +12,10 @@ function App() {
     e.preventDefault();
 
     try {
-      let colors = new Values(color).all(10);
+      let colors = new Values(color).all(1);
       setList(colors);
       console.log(colors);
+      setIsError(false);
     } catch (error) {
       setIsError(true);
       console.log(error, 'unable');
@@ -22,7 +23,7 @@ function App() {
   }
 
   useEffect(() => {
-    let colors = new Values(color).all(10);
+    let colors = new Values(color).all(1);
     setList(colors);
   }, []);
   return (
